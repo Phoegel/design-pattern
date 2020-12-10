@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!-- 扫描controller -->
+    <context:component-scan base-package="com.phoegel.responsibility.analysis.controller"/>
+    <!-- 启用注解驱动 -->
+    <mvc:annotation-driven/>
+
+    <!-- 配置视图解析器 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!-- 配置拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!-- 匹配的是url路径 -->
+            <mvc:mapping path="/**" />
+            <!-- 拦截器类 -->
+            <bean class="com.phoegel.responsibility.analysis.interceptor.MyHandlerInterceptorA"></bean>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <!-- 匹配的是url路径 -->
+            <mvc:mapping path="/**" />
+            <!-- 拦截器类 -->
+            <bean class="com.phoegel.responsibility.analysis.interceptor.MyHandlerInterceptorB"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+</beans>

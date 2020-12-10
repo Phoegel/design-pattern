@@ -1,0 +1,24 @@
+<!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+    <servlet>
+        <servlet-name>DispatcherServlet</servlet-name>
+        <!--在DispatcherServlet的初始化过程中，框架会在web应用的 WEB-INF文件夹下寻找名为[servlet-name]-servlet.xml 的配置文件，生成文件中定义的bean。-->
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!--指明了配置文件的文件名，不使用默认配置文件名，而使用dispatcher-servlet.xml配置文件。-->
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <!-- spring 配置文件路径 -->
+            <param-value>classpath:/spring-servlet.xml</param-value>
+        </init-param>
+        <!-- 启动顺序：让这个 DispatcherServlet 随 Servlet 容器一起启动 -->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DispatcherServlet</servlet-name>
+        <!-- 拦截所有请求 -->
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+</web-app>
