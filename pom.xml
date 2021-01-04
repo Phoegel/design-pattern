@@ -28,6 +28,7 @@
 		<module>mediator</module>
 		<module>observer</module>
 		<module>state</module>
+		<module>memento</module>
     </modules>
     <packaging>pom</packaging>
 
