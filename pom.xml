@@ -30,6 +30,7 @@
 		<module>state</module>
 		<module>memento</module>
 		<module>strategy</module>
+		<module>template-method</module>
     </modules>
     <packaging>pom</packaging>
 
